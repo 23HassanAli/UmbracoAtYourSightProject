@@ -1,4 +1,4 @@
-namespace ProjectAtYourSightUmb
+namespace MyProject
 {
     public class Startup
     {
