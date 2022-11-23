@@ -91,11 +91,12 @@ body {
 }
 
 hr {
-  margin: 1rem 0;
-  color: inherit;
-  background-color: currentColor;
-  border: 0;
-  opacity: 0.25;
+    margin: 1rem 0;
+    color: inherit;
+    border: 0;
+    opacity: 0.25;
+    height: 4px;
+    background-color: orangered;
 }
 
 hr:not([size]) {
@@ -7810,6 +7811,10 @@ textarea.form-control-lg {
 
     background-color: var(--bs-navColor) !important;
 }
+.icon-location{
+    width: 25px;
+}
+
 .bg-primary {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
