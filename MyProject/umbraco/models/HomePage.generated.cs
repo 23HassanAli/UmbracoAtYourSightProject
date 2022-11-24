@@ -98,6 +98,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string HomeInfoTitle => this.Value<string>(_publishedValueFallback, "homeInfoTitle");
 
 		///<summary>
+		/// learn More: Link to the about page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("learnMore")]
+		public virtual string LearnMore => this.Value<string>(_publishedValueFallback, "learnMore");
+
+		///<summary>
 		/// Home Title
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]

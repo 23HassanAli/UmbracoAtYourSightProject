@@ -1,0 +1,6 @@
+
+.navbar .container .container2 ul li a.active {
+    color: blueviolet;
+    text-decoration: none;
+    font-size: 25px;
+}

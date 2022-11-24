@@ -18,16 +18,16 @@
 {
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container px-5">
-                    <a class="navbar-brand" href="@Model.Root().Url()">Legends</a>
+                    <h2 class="navbar-brand" href="@Model.Root().Url()">Legends</h2>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="collapse navbar-collapse container2" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="@Model.Root().Url()">Home</a>
+                        <a class="nav-link" href="@Model.Root().Url()" routerLinkActive="active">Home</a>
                             </li>
                             @foreach (var item in selection)
                             {
-                                <li class="@(item.IsAncestorOrSelf(Model) ? "current" : null)">
+                        <li class="@(item.IsAncestorOrSelf(Model) ? "current" : null)" routerLinkActive="active">
                                   <a class="nav-link" href="@item.Url(PublishedUrlProvider)">@item.Name</a>
                                 </li>
                             }

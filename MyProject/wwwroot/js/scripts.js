@@ -5,3 +5,9 @@
 */
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
+
+
+//document.addEventListener('click', function handleClick(event) {
+//    console.log('user clicked: ', event.target);
+//    event.target.classList.add('activeLink');
+//});
