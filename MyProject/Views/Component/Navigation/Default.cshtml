@@ -1,28 +1,25 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using MyProject.Components.Navigation
 @using MyProject.Controllers
 @using Umbraco.Cms.Core
 @using Umbraco.Cms.Core.Models.PublishedContent
 @using Umbraco.Cms.Core.Routing
 @using Umbraco.Extensions
 
+@model NavigationViewModel
 @inject IPublishedValueFallback PublishedValueFallback
 @inject IPublishedUrlProvider PublishedUrlProvider
-@*
-    This snippet displays a list of links of the pages immediately under the top-most page in the content tree.
-    This is the home page for a standard website.
-    It also highlights the current active page/section in the navigation with the CSS class "current".
-*@
 
 @{
     var selection = Model.Root().Children.Where(x => x.IsVisible(PublishedValueFallback)).ToArray();
 
-
+    
 }
 @if (selection?.Length > 0)
 {
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger bg-gradient">
-        <div class="container px-10 py-4">
-            <h2 class="text-white font-weight-bold" href="@Model.Root().Url()">Legends</h2>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container px-5">
+            <h2 class="navbar-brand" href="@Model.Root().Url()">Legends</h2>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse container2" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -35,22 +32,10 @@
                             <a class="nav-link" href="@item.Url(PublishedUrlProvider)">@item.Name</a>
                         </li>
                     }
-                    <li>
-                        <div class="input-group">
-                            <div id="search-autocomplete" class="form-outline">
-                                <input type="search" id="form1" class="form-control" placeholder="Search" />
-                               @* <label class="form-label" for="form1">Search</label>*@
-                            </div>
-                            <button type="button" class="btn btn-success">
-                                <img src="https://img.icons8.com/ios-filled/50/null/search--v1.png" style="width:20px"/>
-                            </button>
-                        </div>
-                    </li>
+                    <li style="color:white"> °</li>
                 </ul>
-                
+
             </div>
         </div>
     </nav>
 }
-
-

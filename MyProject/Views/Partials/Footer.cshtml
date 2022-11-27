@@ -1,0 +1,22 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using MyProject.Controllers
+@using Umbraco.Cms.Core
+@using Umbraco.Cms.Core.Models.PublishedContent
+@using Umbraco.Cms.Core.Routing
+@using Umbraco.Extensions
+
+@inject IPublishedValueFallback PublishedValueFallback
+@inject IPublishedUrlProvider PublishedUrlProvider
+@{
+
+}
+<footer class="bg-dark py-4 mt-auto">
+    <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+        <div class="col-9">
+            <div class="small m-0 text-white">@Model.Value("footerText", fallback: Fallback.ToDefaultValue, defaultValue: new HtmlString("Copyright © AtYourSight 2022"))</div>
+        </div>
+        <div class="col-3">
+            <div class="small m-0 text-white"> @Model.Value("footerAddress", fallback: Fallback.ToDefaultValue, defaultValue: new HtmlString("Kol. Dusartplein 36/0.02 3500 Hasselt, België"))</div>
+        </div>
+    </div>
+</footer>
