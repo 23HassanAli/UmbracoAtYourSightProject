@@ -4,7 +4,7 @@
 @using Umbraco.Cms.Core.Models.PublishedContent;
 @{
     Layout = "Main.cshtml";
-    var homeImage = Model.Value<IPublishedContent>("homeImage");
+    //var homeImage = Model.Value<IPublishedContent>("homeImage");
 }
 
 <!-- Header-->
@@ -13,16 +13,16 @@
         <div class="row gx-5 align-items-center justify-content-center">
             <div class="col-lg-8 col-xl-7 col-xxl-6">
                 <div class="my-5 text-center text-xl-start">
-                    <h1 class="display-5 fw-bolder mb-2">@Model.Value("homeInfoTitle")</h1>
+                    <h1 class="display-5 fw-bolder mb-2"></h1>
                     <div style="background-color:#59bfff" class="">
-                        @Model.Value("bodyText")
+                       
                     </div>
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                        <a class="btn btn-secondary btn-lg px-4" href="@Model.Value("learnMore")">@Model.Value("learnMoreContent")</a>
+                        <a class="btn btn-secondary btn-lg px-4" href=""></a>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="@homeImage.Url()" alt="..." /></div>
+            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="" alt="..." /></div>
         </div>
     </div>
 
