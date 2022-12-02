@@ -1,9 +1,12 @@
 ﻿@using MyProject.Controllers
+@using MyProject.Models
 @using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ContactPage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
 @{
-	Layout = "Main.cshtml";
+    Layout = "Main.cshtml";
+
 }
 
 <section class="py-5">
@@ -26,9 +29,10 @@
                     <!-- to get an API token!-->
                     @using (Html.BeginUmbracoForm<ContactFormController>(nameof(ContactFormController.Submit)))
                     {
+                       
                         <!-- Name input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="name" name="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                            <input class="form-control" id="fullName" name="fullname" type="text" placeholder="Enter your name..." data-sb-validations="required" />
                             <label for="name">Full name</label>
                             <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                         </div>
@@ -41,7 +45,7 @@
                         </div>
                         <!-- Phone number input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="phone" name="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
+                            <input class="form-control" id="phoneNumber" name="phoneNumber" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
                             <label for="phone">Phone number</label>
                             <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
                         </div>
@@ -55,21 +59,26 @@
                         <!---->
                         <!-- This is what your users will see when the form-->
                         <!-- has successfully submitted-->
-                        <div class="d-none" id="submitSuccessMessage">
-                            <div class="text-center mb-3">
-                                <div class="fw-bolder">Form submission successful!</div>
-                                To activate this form, sign up at
-                                <br />
-                                <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                        @if (TempData["ContactSuccess"] != null && (bool)TempData["ContactSuccess"])
+                        {
+                            <div class="block" id="submitSuccessMessage">
+                                <div class="text-center mb-3">
+                                    <div class="fw-bolder">Form submission successful!</div>
+                                </div>
                             </div>
-                        </div>
+                        }
                         <!-- Submit error message-->
                         <!---->
                         <!-- This is what your users will see when there is-->
                         <!-- an error submitting the form-->
-                        <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                        <div>
+                               @Html.ValidationSummary()
+                        </div>
+
+                        <input type="hidden" name="token" id="token" />
+                        
                         <!-- Submit Button-->
-                        <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submit" name="submit" type="submit">Submit</button></div>
+                        <div class="d-grid"><button class="btn btn-primary btn-lg" id="submit" onsubmit="getToken"  name="submit" type="submit">Submit</button></div>
                     }
                 </div>
             </div>
@@ -88,10 +97,10 @@
                 </div>
                 <div class="row">
                     <img src="https://img.icons8.com/material-outlined/24/null/wall-clock.png" class="col-3" style="width:50px" />
-                    <p class="9" >Maandag - Vrijdag</p>
+                    <p class="9">Maandag - Vrijdag</p>
                 </div>
                 <div class="row">
-                    <img src="https://img.icons8.com/material-outlined/24/null/filled-message.png"   style="width:50px" class="col-3" />
+                    <img src="https://img.icons8.com/material-outlined/24/null/filled-message.png" style="width:50px" class="col-3" />
                     <p class="9" style="color:red">hello@atyoursite.be</p>
                 </div>
                 <div class="row">
@@ -105,3 +114,4 @@
         </div>
     </div>
 </section>
+
