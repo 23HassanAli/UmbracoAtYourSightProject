@@ -4,6 +4,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="wwwroot\scripts\**" />
+    <Content Remove="wwwroot\scripts\**" />
+    <EmbeddedResource Remove="wwwroot\scripts\**" />
+    <None Remove="wwwroot\scripts\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Umbraco.Cms" Version="10.3.2" />
@@ -14,10 +20,6 @@
     <PackageReference Include="Microsoft.ICU.ICU4C.Runtime" Version="68.2.0.9" />
     <PackageReference Include="Umbraco.Forms" Version="10.2.1" />
     <RuntimeHostConfigurationOption Include="System.Globalization.AppLocalIcu" Value="68.2.0.9" Condition="$(RuntimeIdentifier.StartsWith('linux')) or $(RuntimeIdentifier.StartsWith('win')) or ('$(RuntimeIdentifier)' == '' and !$([MSBuild]::IsOSPlatform('osx')))" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\scripts\" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -1,4 +1,5 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using MyProject.Controllers;
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.HomePage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @using Umbraco.Cms.Core.Models.PublishedContent;
@@ -13,16 +14,16 @@
         <div class="row gx-5 align-items-center justify-content-center">
             <div class="col-lg-8 col-xl-7 col-xxl-6">
                 <div class="my-5 text-center text-xl-start">
-                    <h1 class="display-5 fw-bolder mb-2"></h1>
+                    <h1 class="display-5 fw-bolder mb-2">@Model.HomeInfoTitle</h1>
                     <div style="background-color:#59bfff" class="">
-                       
+                        @Model.BodyText
                     </div>
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                        <a class="btn btn-secondary btn-lg px-4" href=""></a>
+                        <a class="btn btn-secondary btn-lg px-4" href="#">Discover</a>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="" alt="..." /></div>
+            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="@Model.HomeImage.Url()" alt="..." /></div>
         </div>
     </div>
 
@@ -80,22 +81,29 @@
     </div>
 </div>
 <!-- Blog preview section-->
+<div>
+    @Html.ValidationSummary()
+</div>
 <section class="py-5">
     <div class="container px-5 my-5">
         <!-- Call to action-->
         <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5">
             <div class="d-flex align-items-c²enter justify-content-between flex-column flex-xl-row text-center text-xl-start">
                 <div class="mb-4 mb-xl-0">
-                    <div class="fs-3 fw-bold text-white">New products, delivered to you.</div>
+                    <div class="fs-3 fw-bold text-white">@Model.Value("subscriptionText")</div>
                     <div class="text-white-50">Sign up for our newsletter for the latest updates.</div>
                 </div>
+                @using (Html.BeginUmbracoForm<SubscriptionController>(nameof(SubscriptionController.Submit)))
+                    {
                 <div class="ms-xl-4">
                     <div class="input-group mb-2">
-                        <input class="form-control" type="text" placeholder="Email address..." aria-label="Email address..." aria-describedby="button-newsletter" />
-                        <button class="btn btn-outline-light" id="button-newsletter" type="button">Sign up</button>
+                        <input class="form-control" type="text" name="email" placeholder="Email address..." aria-label="Email address..." aria-describedby="button-newsletter" />
+                        <button class="btn btn-outline-light" id="button-newsletter" type="submit">Sign up</button>
                     </div>
                     <div class="small text-white-50">We care about privacy, and will never share your data.</div>
                 </div>
+                }
+                
             </div>
         </aside>
     </div>

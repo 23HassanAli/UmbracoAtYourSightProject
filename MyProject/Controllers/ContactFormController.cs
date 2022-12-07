@@ -40,9 +40,9 @@ namespace MyProject.Controllers
             TempData["ContactSuccess"] = false;
             if (!await _googleCaptchaService.VerifyToken(contactForm.Token))
             {
-               
+
             }
-                if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 // Create a new child item of type 'nieuwe contact'
                 var contact = contentService.Create($"{contactForm.FullName} - {DateTime.Now.ToString()}", parentId, "ContactFormulier");
@@ -52,46 +52,10 @@ namespace MyProject.Controllers
                 contact.SetValue("message", contactForm.Message);
                 Services.ContentService.SaveAndPublish(contact);
                 TempData["ContactSuccess"] = true;
-                //SendMail(contactForm);
                 return RedirectToUmbracoPage(parentId);
             }
             return CurrentUmbracoPage();
 
-        }
-        private void SendMail(ContactForm contactForm)
-        {
-
-            const string mailServer = "smtp.gmail.com";
-            const int portNumber = 587;
-            const string userName = "pagerentboeken@gmail.com";
-            const string password = "mliclufiryopaudu";
-            try
-            {
-                MailMessage mailMessage = new MailMessage();
-                SmtpClient smtpClient = new SmtpClient();
-                mailMessage.From = new MailAddress(contactForm.Email);
-                mailMessage.To.Add(userName);
-                mailMessage.Subject = "Client Contacted";
-                mailMessage.Body = contactForm.Message;
-
-                smtpClient.UseDefaultCredentials = false;
-                NetworkCredential networkCredential = new NetworkCredential(userName, password);
-                smtpClient.Credentials = networkCredential;
-
-                smtpClient.EnableSsl = true;
-                smtpClient.Port = portNumber;
-                smtpClient.Host = mailServer;
-
-
-
-                smtpClient.Send(mailMessage);
-
-            }
-            catch (Exception ex)
-            {
-
-                throw new Exception(ex.Message);
-            }
         }
     }
 }

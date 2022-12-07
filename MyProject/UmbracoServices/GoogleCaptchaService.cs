@@ -3,7 +3,7 @@ using MyProject.Interfaces;
 using MyProject.Models;
 using Newtonsoft.Json;
 
-namespace MyProject.Services
+namespace MyProject.UmbracoServices
 {
     public class GoogleCaptchaService : IGoogleCaptchaService
     {

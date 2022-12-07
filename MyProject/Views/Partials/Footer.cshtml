@@ -9,14 +9,67 @@
 @inject IPublishedUrlProvider PublishedUrlProvider
 @{
 
+
 }
+<footer class="text-white pt-5 pb-4" style="background-color:#0061f0">
+    <div class="container text-center text-md-start">
+        <div class="row text-center text-md-start">
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold text-dark" style="background-color:orange">Legends</h5>
+                <p class="text-white">You do not need to worry about mobile-friendliness. It is a Bootstrap snippet, following the latest web trends to a tee.</p>
+            </div>
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weigh-bold text-dark">Products</h5>
+                <p>
+                    <a href="#" class="text-white" style="text-decoration: none;">About</a>
+                </p>
+                <p>
+                    <a href="#" class="text-white" style="text-decoration: none;">Blog</a>
+                </p>
+                <p>
+                    <a href="#" class="text-white" style="text-decoration: none;">Contact</a>
+                </p>
+            </div>
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weigh-bold text-dark">Links</h5>
+                <p>
+                    <a href="#" class="text-white" style="text-decoration: none;">Account</a>
+                </p>
+                <p>
+                    <a href="#" class="text-white" style="text-decoration: none;">Rates</a>
+                </p>
+                <p>
+                    <a href="#" class="text-white" style="text-decoration: none;">Help</a>
+                </p>
+            </div>
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weigh-bold text-dark">Contact</h5>
+                <p class="text-white">
+                    <img class="mr-3" src="https://img.icons8.com/windows/32/null/home-page.png" />
+                    Hasselt, Dusartplain 25, 3500, Belgium
+                </p>
+                <p class="text-white">
+                    <img class="mr-3" src="https://img.icons8.com/ios/50/null/envelope-dots.png" style="width:32px" />
+                    lorum.ipsum@lookup.com
+                </p>
+                <p class="text-white">
+                    <img class="mr-3" src="https://img.icons8.com/ios/50/000000/phone.png"  style="width:32px"/>
+                    +32 128754546
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+@*
 <footer class="bg-dark py-4 mt-auto">
     <div class="row align-items-center justify-content-between flex-column flex-sm-row">
         <div class="col-9">
             <div class="small m-0 text-white">@Model.Value("footerText", fallback: Fallback.ToDefaultValue, defaultValue: new HtmlString("Copyright © AtYourSight 2022"))</div>
         </div>
-        <div class="col-3">
+       <div class="col-3">
             <div class="small m-0 text-white"> @Model.Value("footerAddress", fallback: Fallback.ToDefaultValue, defaultValue: new HtmlString("Kol. Dusartplein 36/0.02 3500 Hasselt, België"))</div>
-        </div>
+      </div>
     </div>
-</footer>
+</footer>*@

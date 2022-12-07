@@ -5,32 +5,52 @@
     Layout = "Main.cshtml";
     var selection = Umbraco.Content(Guid.Parse("9d9db464-5329-4096-98fd-95166af01c36"))
                     .ChildrenOfType("blogItem")
+                    
                     .Where(x => x.IsVisible())
                     .OrderBy(x => x.CreateDate);
+
+    var dateString = "12/5/2022 12:00:00 AM";
+    DateTime date1 = DateTime.Parse(dateString);
+
+    var selection2 = Umbraco.Content(Guid.Parse("9d9db464-5329-4096-98fd-95166af01c36"))
+                    .ChildrenOfType("blogItem")
+                    .Where(x => (x.CreateDate > date1))
+                    .Where(x => x.IsVisible());
 }
 <main class="flex-shrink-0">
     <!-- Page Content-->
     <section class="py-5">
         <div class="container px-5">
             <h1 class="fw-bolder fs-5 mb-4">Company Blog</h1>
-            <div class="card border-0 shadow rounded-3 overflow-hidden">
-                <div class="card-body p-0">
-                    <div class="row gx-0">
-                        <div class="col-lg-6 col-xl-5 py-lg-5">
-                            <div class="p-4 p-md-5">
-                                <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
-                                <div class="h2 fw-bolder">Article heading goes here</div>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique delectus ab doloremque, qui doloribus ea officiis...</p>
-                                <a class="stretched-link text-decoration-none" href="#!">
-                                    Read more
-                                    <i class="bi bi-arrow-right"></i>
-                                </a>
+            @foreach (var item in selection2)
+            {
+                var thumbnail = item.Value<IPublishedContent>("thumbnailImage");
+                <div class="card border-0 shadow rounded-3 overflow-hidden">
+                    <div class="card-body p-0">
+                        <div class="row gx-0">
+                            <div class="col-lg-6 col-xl-5 py-lg-5">
+                                <div class="p-4 p-md-5">
+                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
+                                    <div class="h2 fw-bolder">
+                                        @item.Value("title")
+                                    </div>
+                                    <p>@item.Value("subtitle")...</p>
+                                    <a class="stretched-link text-decoration-none" href="@item.Url()">
+                                        Read more
+                                        <i class="bi bi-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-xl-7">
+                                <div class="bg-featured-blog" >
+                                    <img src="@thumbnail.Url()" style="width:782px">
+                                </div>    
                             </div>
                         </div>
-                        <div class="col-lg-6 col-xl-7"><div class="bg-featured-blog" style="background-image: url('https://dummyimage.com/700x350/343a40/6c757d')"></div></div>
                     </div>
                 </div>
-            </div>
+            }
+           
         </div>
     </section>
     <section class="py-5 bg-light">
@@ -90,16 +110,16 @@
         <div class="container px-5">
             <h2 class="fw-bolder fs-5 mb-4">Featured Stories</h2>
             <div class="row gx-5">
-        
+
                 @foreach (var item in selection)
                 {
                     var thumbnail = item.Value<IPublishedContent>("thumbnailImage");
- 
+
                     <div class="col-lg-4 mb-5">
                         <div class="card h-100 shadow border-0">
                             <img class="card-img-top" style="height:300px; width:auto" src="@thumbnail.Url()" alt="..." />
                             <div class="card-body p-4">
-                  
+
                                 <a class="text-decoration-none link-dark stretched-link" href="@item.Url()"><div class="h5 card-title mb-3">@item.Value("title")</div></a>
                                 <p class="card-text mb-0">@item.Value("subtitle")</p>
                             </div>

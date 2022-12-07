@@ -1,5 +1,5 @@
 ﻿using MyProject.Interfaces;
-using MyProject.Services;
+using MyProject.UmbracoServices;
 using Umbraco.Cms.Core.Composing;
 
 namespace MyProject.Composers

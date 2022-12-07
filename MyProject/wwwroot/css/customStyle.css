@@ -1,11 +1,14 @@
+
+
 a{
     text-decoration : none;
 }
-.navbar .container .container2 ul li a.activate {
-    color: black;
-    text-decoration: none;
-    font-size: 30px;
 
+.active, .lnks:hover {
+    font-size: 30px;
+    color: white;
+    background-color: black;
+    padding: 5px;
 }
 .bg-gradient-primary-to-secondary {
     background-color: #0061f0 !important;
