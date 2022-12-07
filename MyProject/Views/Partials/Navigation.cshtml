@@ -14,34 +14,34 @@
 
 @if (selection?.Length > 0)
 {
-            <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-primary-to-secondary">
-                    <div class="container px-5 py-5">
-                        <div class="navbar-brand" style="font-size:50px">Legends</div>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                            <div class="container2 collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <a class="nav-link" style="font-size:25px" href="@Model.Root().Url()">Home</a>
-                                 </li>
-                             @foreach (var item in selection)
-                             {
-                                <li class="nav-item">
-                                            <a class="nav-link" href="@item.Url(PublishedUrlProvider)" style="font-size:30px">@item.Name</a>
-                                </li>
-                             }
-                                <li>
-                                    <div class="input-group">
-                                        <div id = "search-autocomplete" class="form-outline">
-                                            <input type = "search" id="form1" class="form-control" placeholder="Search" />
-                                     </div>
-                                    <button type = "button" class="btn btn-success">
-                                        <img src = "https://img.icons8.com/ios-filled/50/null/search--v1.png" style="width:20px"/>
-                                     </button>
-                                    </div>
-                                </li>
-                          </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-primary-to-secondary">
+        <div class="container px-3 py-3">
+            <div class="navbar-brand" style="font-size:50px; font-family:'Brush Script MT'">Legends</div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="container2 collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" style="font-size:20px" href="@Model.Root().Url()">Home</a>
+                    </li>
+                    @foreach (var item in selection)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="@item.Url(PublishedUrlProvider)" style="font-size:20px">@item.Name</a>
+                        </li>
+                    }
+                    <li>
+                        <div class="input-group">
+                            <div id="search-autocomplete" class="form-outline">
+                                <input type="search" id="form1" class="form-control" placeholder="Search" />
+                            </div>
+                            <button type="button" class="btn btn-success">
+                                <img src="https://img.icons8.com/ios-filled/50/null/search--v1.png" style="width:20px" />
+                            </button>
                         </div>
-                    </div>
-       </nav>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 }
 

@@ -1,18 +1,12 @@
-
-.navbar .container .container2 ul li a.active {
-    color: white;
+a{
+    text-decoration : none;
+}
+.navbar .container .container2 ul li a.activate {
+    color: black;
     text-decoration: none;
     font-size: 30px;
-    background-color: black
-    /*border-bottom: 3px solid black*/
+
 }
 .bg-gradient-primary-to-secondary {
     background-color: #0061f0 !important;
-}
-
-@media  (min-width: 1200px) {
-    .svg-border-waves {
-        padding-top: 2rem;
-    }
-    
 }

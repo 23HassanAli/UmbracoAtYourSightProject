@@ -1,3 +1,5 @@
+using MyProject.Models;
+
 namespace MyProject
 {
     public class Startup
@@ -29,6 +31,7 @@ namespace MyProject
         /// </remarks>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<GooglereCaptchaSettings>(_config.GetSection("GoogleReCaptcha"));
             services.AddUmbraco(_env, _config)
                 .AddBackOffice()
                 .AddWebsite()
