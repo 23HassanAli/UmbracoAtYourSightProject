@@ -1,0 +1,28 @@
+﻿@using Azure.Core;
+@using MyProject.Controllers;
+@using MyProject.Models;
+@using MyProject.Models.ViewModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<SearchContentModel>
+
+@{
+    Layout = "Main.cshtml";
+}
+<div class="container">
+    <div class="col-md-9">
+        @await Html.PartialAsync("SearchForm", Model.SearchModel)
+        <article>
+            <p>Query: @Model.SearchModel.Query returned these results: </p>
+           @if (Model.SearchResults != null && Model.SearchResults.Any())
+            {
+                foreach (var item in Model.SearchResults)
+                {
+                    <p><a href="@item.Url()" >@item.Name()</a></p>
+                }
+            }
+            else
+            {
+                <p>No results found</p>
+            }
+        </article>
+    </div>
+</div>

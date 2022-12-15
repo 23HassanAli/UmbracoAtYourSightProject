@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>BlogHome</summary>
 	[PublishedModel("blogHome")]
-	public partial class BlogHome : PublishedContentModel, ITitleBox
+	public partial class BlogHome : PublishedContentModel, IBlogItems, INavigation, ITitleBox
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -56,6 +56,52 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("featuredStory")]
 		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent FeaturedStory => this.Value<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent>(_publishedValueFallback, "featuredStory");
+
+		///<summary>
+		/// Author Name
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("authorName")]
+		public virtual string AuthorName => global::Umbraco.Cms.Web.Common.PublishedModels.BlogItems.GetAuthorName(this, _publishedValueFallback);
+
+		///<summary>
+		/// Body Text
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("bodyText")]
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString BodyText => global::Umbraco.Cms.Web.Common.PublishedModels.BlogItems.GetBodyText(this, _publishedValueFallback);
+
+		///<summary>
+		/// Intro Text
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("introText")]
+		public virtual string IntroText => global::Umbraco.Cms.Web.Common.PublishedModels.BlogItems.GetIntroText(this, _publishedValueFallback);
+
+		///<summary>
+		/// Published On
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
+		[ImplementPropertyType("publishedOn")]
+		public virtual global::System.DateTime PublishedOn => global::Umbraco.Cms.Web.Common.PublishedModels.BlogItems.GetPublishedOn(this, _publishedValueFallback);
+
+		///<summary>
+		/// Thumbnail Image
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("thumbnailImage")]
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops ThumbnailImage => global::Umbraco.Cms.Web.Common.PublishedModels.BlogItems.GetThumbnailImage(this, _publishedValueFallback);
+
+		///<summary>
+		/// Add to Nav: If true will be added to the navbar
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
+		[ImplementPropertyType("addToNav")]
+		public virtual bool AddToNav => global::Umbraco.Cms.Web.Common.PublishedModels.Navigation.GetAddToNav(this, _publishedValueFallback);
 
 		///<summary>
 		/// Subtitle

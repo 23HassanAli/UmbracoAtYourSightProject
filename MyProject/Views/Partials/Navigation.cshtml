@@ -1,20 +1,28 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
-@using Umbraco.Cms.Core
-@using Umbraco.Cms.Core.Models.PublishedContent
-@using Umbraco.Cms.Core.Routing
-@using Umbraco.Extensions
+@using Umbraco.Cms.Core;
+@using Umbraco.Cms.Core.Models.PublishedContent;
+@using Umbraco.Cms.Core.Routing;
+@using Umbraco.Extensions;
 
 @inject IPublishedValueFallback PublishedValueFallback
 @inject IPublishedUrlProvider PublishedUrlProvider
 
 
 @{
-    var selection = Model.Root().Children.Where(x => x.IsVisible(PublishedValueFallback)).ToArray();
+    var site = Model.Root();
+    var selection = site.Children.Where(x => x.IsVisible(PublishedValueFallback)).ToArray();
+    var sel = Model.Root().Children.Where(x => x.IsVisible(PublishedValueFallback)).ToArray();
+
+    var selectSearch = Umbraco.ContentAtRoot().FirstOrDefault()
+    .ChildrenOfType("search")
+    .Where(x => x.IsVisible());
+    var search = Model.Root().ChildrenOfType("search").Where(x => x.IsVisible());
+
 }
 
 
 
-@if (selection?.Length > 0)
+@if (sel?.Length > 0)
 {
     <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-primary-to-secondary">
         <div class="container px-3 py-3">
@@ -22,26 +30,25 @@
             <img src="~/assets/logo-preview.png" style="width:100px">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="container2 collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-3 mb-lg-0" id="myDiv">
-                    <li class="text-white-50 lnks">
+                <ul class="navbar-nav ms-auto mb-3 mb-lg-0" id="myListItems">
+                    <li class="text-white-50 @Html.Raw(Model.Id == site.Id ? "active" : "")">
                         <a class="nav-link lnks" href="@Model.Root().Url()">Home</a>
                     </li>
-                    @foreach (var item in selection)
+                    @foreach (var item in selection.Where(x => x.HasProperty("addToNav") && x.GetProperty("addToNav").HasValue() == true))
                     {
-                        <li class="nav-item text-white-50 @(item.IsAncestorOrSelf(Model) ? "Active" : null) " style="background-color:#0000">
+                        <li class="nav-item text-white-50 @(item.IsAncestorOrSelf(Model) ? "active" : "") " style="background-color:#0000">
                             <a class="nav-link lnks" href="@item.Url(PublishedUrlProvider)">@item.Name</a>
                         </li>
                     }
-                    <li>
-                        <div class="input-group">
-                            <div id="search-autocomplete" class="form-outline">
-                                <input type="search" id="form1" class="form-control" placeholder="Search" />
-                            </div>
-                            <button type="button" class="btn btn-success">
+                  
+                         <li>
+                        <div class="input-group">                   
+                            <a class="btn btn-success" href="Views/Components/Search/Index.cshtml">
+                                Search
                                 <img src="https://img.icons8.com/ios-filled/50/null/search--v1.png" style="width:20px" />
-                            </button>
+                            </a>
                         </div>
-                    </li>
+                    </li>                  
                 </ul>
             </div>
         </div>

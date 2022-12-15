@@ -4,10 +4,12 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace MyProject.Components
 {
+
     [ViewComponent(Name ="Navigation")]
     public class NavigationViewComponent : ViewComponent
     {
-        public async Task<ViewComponentResult> InvokeAsync()
+        //to show this view component in the header you need @await Component.InvokeAsync("Navigaiton)
+        public async Task<IViewComponentResult> InvokeAsync()
         {
             return View();
         }

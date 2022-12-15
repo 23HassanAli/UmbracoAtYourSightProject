@@ -4,11 +4,12 @@ a{
     text-decoration : none;
 }
 
-.active, .lnks:hover {
-    font-size: 30px;
+.activate, .lnks:hover {
+    font-size: 25px;
     color: white;
     background-color: black;
-    padding: 5px;
+    padding: 3px;
+    border-radius: 10px;
 }
 .bg-gradient-primary-to-secondary {
     background-color: #0061f0 !important;
