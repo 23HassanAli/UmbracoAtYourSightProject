@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
 using Umbraco.Cms.Core.Composing;
 
 namespace MyProject.Models.ViewModels
@@ -10,7 +11,8 @@ namespace MyProject.Models.ViewModels
         public string? Query { get; set; }
         [Display(Name = "Category")]
         public string? Category { get; set; }
-        [Display(Name = "Page Number")]
+        public IEnumerable<SelectListItem> Categories { get; set; }
+        //[Display(Name = "Page Number")]
         public string? Page { get; set; }
     }
 }

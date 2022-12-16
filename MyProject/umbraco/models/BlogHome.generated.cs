@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>BlogHome</summary>
 	[PublishedModel("blogHome")]
-	public partial class BlogHome : PublishedContentModel, IBlogItems, INavigation, ITitleBox
+	public partial class BlogHome : PublishedContentModel, IBlogItems, ICategories, INavigation, ITitleBox
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -95,6 +95,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("thumbnailImage")]
 		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops ThumbnailImage => global::Umbraco.Cms.Web.Common.PublishedModels.BlogItems.GetThumbnailImage(this, _publishedValueFallback);
+
+		///<summary>
+		/// Category
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("category")]
+		public virtual global::System.Collections.Generic.IEnumerable<string> Category => global::Umbraco.Cms.Web.Common.PublishedModels.Categories.GetCategory(this, _publishedValueFallback);
 
 		///<summary>
 		/// Add to Nav: If true will be added to the navbar

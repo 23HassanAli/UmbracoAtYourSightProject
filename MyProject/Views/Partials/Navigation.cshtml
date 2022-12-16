@@ -32,15 +32,14 @@
             <div class="container2 collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-3 mb-lg-0" id="myListItems">
                     <li class="text-white-50 @Html.Raw(Model.Id == site.Id ? "active" : "")">
-                        <a class="nav-link lnks" href="@Model.Root().Url()">Home</a>
+                        <a class="link" href="@Model.Root().Url()">Home</a>
                     </li>
                     @foreach (var item in selection.Where(x => x.HasProperty("addToNav") && x.GetProperty("addToNav").HasValue() == true))
                     {
                         <li class="nav-item text-white-50 @(item.IsAncestorOrSelf(Model) ? "active" : "") " style="background-color:#0000">
-                            <a class="nav-link lnks" href="@item.Url(PublishedUrlProvider)">@item.Name</a>
+                            <a class="link" href="@item.Url(PublishedUrlProvider)">@item.Name</a>
                         </li>
-                    }
-                  
+                    }                 
                          <li>
                         <div class="input-group">                   
                             <a class="btn btn-success" href="Views/Components/Search/Index.cshtml">

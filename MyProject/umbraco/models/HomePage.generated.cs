@@ -82,6 +82,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string FooterText => this.Value<string>(_publishedValueFallback, "footerText");
 
 		///<summary>
+		/// Header Message
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("headerMessage")]
+		public virtual string HeaderMessage => this.Value<string>(_publishedValueFallback, "headerMessage");
+
+		///<summary>
 		/// Home Image
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]

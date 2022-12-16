@@ -5,13 +5,14 @@ using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Infrastructure.Examine;
 using Umbraco.Cms.Core.Web;
 using Umbraco.Cms.Web.Common;
+using MyProject.Extensions;
 
 namespace MyProject.Services
 {
     public class SearchService : ISearchService
     {
         private readonly UmbracoHelper _umbracoHelper;
-        private readonly IUmbracoContextFactory _umbracoContextfactory;
+        //private readonly IUmbracoContextFactory _umbracoContextfactory;
         private readonly IExamineManager _examineManager;
         public SearchService(IExamineManager examineManager, UmbracoHelper umbracoHelper)
         {
@@ -24,7 +25,7 @@ namespace MyProject.Services
             int pageSize = 10)
         {
              
-            var pageOfReuslts = GetPageOfSearchResults(searchTerm, category, pageNumber, out totalItemCount, null, "content");
+            var pageOfReuslts = GetPageOfSearchResults(searchTerm, category, pageNumber, out totalItemCount, docTypeAliases, "content");
             var items = new List<IPublishedContent>();
             if (pageOfReuslts != null && pageOfReuslts.Any())
             {
@@ -56,16 +57,30 @@ namespace MyProject.Services
                     ? searchTerm.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
                     : !string.IsNullOrWhiteSpace(searchTerm) ? new string[] { searchTerm } : null;
                 var searcher = index.Searcher.CreateQuery(searchType);
+                    
+                    //.And().Field("category", category);
                 var query = searcher.GroupedNot(new string[] {"umbracoNaviHide"}, new string[] {"1"});
                 if (terms.Any())
                 {
-                    query.And(q => q.GroupedOr(new[] { "nodeName", "pageTitle", "bodyText", "authorName", "bodyText", "introText"  }, terms), BooleanOperation.Or);
+                    query.And(q => q
+                    //.GroupedOr(new[] { "" }, terms.Boost(10))
+                    //.Or()
+                    .GroupedOr(new[] { "blogHome" }, terms.Boost(12))
+                    .Or()
+                    .GroupedOr(new[] { "blogItem" }, terms.Boost(7))
+                    .Or()
+                    .GroupedOr(new[] { "pageTitle" }, terms.Boost(6))
+                    .Or()
+                    .GroupedOr(new[] { "bodyText" }, terms.Boost(5))
+                    .Or()
+                    .GroupedOr(new[] { "authorName" }, terms.Boost(4))
+                    .Or()
+                    .GroupedOr(new[] { "blogHome", "blogItem", "pageTitle", "bodyText", "authorName", "bodyText", "introText", "category"  }, terms.Fuzzy()), BooleanOperation.Or);
                 }
                 if (docTypeAliases != null && docTypeAliases.Any())
                 {
-                    query.And(q => q.GroupedOr(new[] {"__NodeTypeAlias" }, docTypeAliases));
+                    query.And(q => q.GroupedOr(new[] { "__NodeTypeAlias" }, docTypeAliases));
                 }
-
                 //if (!string.IsNullOrWhiteSpace(category))
                 //{
                 //    query.And().Field("searchbableCatergories", category);

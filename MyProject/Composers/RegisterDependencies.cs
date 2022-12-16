@@ -14,6 +14,8 @@ namespace MyProject.Composers
             builder.Services.AddTransient<IGoogleCaptchaService, GoogleCaptchaService>();
 
             builder.Services.AddScoped<ISearchService, SearchService>();
+
+            builder.Services.AddSingleton(typeof(IDataTypeValueService), typeof(DataTypeValueService));    
             
         }
     }

@@ -1,7 +1,7 @@
 
 
-a{
-    text-decoration : none;
+a {
+    text-decoration: none;
 }
 
 .activate, .lnks:hover {
@@ -11,6 +11,12 @@ a{
     padding: 3px;
     border-radius: 10px;
 }
+
 .bg-gradient-primary-to-secondary {
     background-color: #0061f0 !important;
+}
+
+.nav-link {
+    background-color: black;
+    padding: 3px;
 }

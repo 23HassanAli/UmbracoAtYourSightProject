@@ -33,12 +33,12 @@ namespace MyProject.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Submit(ContactForm contactForm)
+        public async Task<IActionResult> Submit(ContactForm contactForm, string token)
         {
             var contentService = Services.ContentService;
             var parentId = Guid.Parse("c19d8e29-da43-47a2-80bb-8ed3e1c27594");
             TempData["ContactSuccess"] = false;
-            if (!await _googleCaptchaService.VerifyToken(contactForm.Token))
+            if (!await _googleCaptchaService.VerifyToken(token))
             {
 
             }

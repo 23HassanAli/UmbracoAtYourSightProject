@@ -3,7 +3,7 @@
 @inherits UmbracoViewPage<SearchViewModel>
 @model SearchViewModel
 
-@using(Html.BeginUmbracoForm("SubmitForm", "SearchSurface", FormMethod.Post))
+@using (Html.BeginUmbracoForm("SubmitForm", "SearchSurface", FormMethod.Post))
 {
     <div class="container">
         <div class="row">
@@ -13,23 +13,17 @@
                     @Html.TextBoxFor(m => m.Query, new { @class = "form-control", placeholder = "Search..."})
                     @*@Html.ValidationMessageFor(m => m.Query)*@
                 </div>
+                
             </div>
             <div class="form-group col-md-6">
                 @Html.LabelFor(m => m.Category)
                 <div class="input-group">
-                    @Html.TextBoxFor(m => m.Category, new { @class = "form-control", placeholder = "Search..."})
-                   @* @Html.ValidationMessageFor(m => m.Category)*@
+                    @Html.DropDownListFor(m => m.Category, Model.Categories, "All")
                 </div>
-            </div>
-                 <div class="form-group col-md-6">
-                @Html.LabelFor(m => m.Page)
-                <div class="input-group">
-                    @Html.TextBoxFor(m => m.Page, new { @class = "form-control", placeholder = "Search..."})
-                   @* @Html.ValidationMessageFor(m => m.Page)*@
-                </div>
+
             </div>
             <div class="form-group col-md-6">
-                <button id="Submit" class="btn btn-primary btn-block mt-5">Search</button>
+                <button id="Submit" class="btn btn-primary btn-block mt-4">Search</button>
             </div>
         </div>
     </div>
@@ -37,7 +31,7 @@
 @if (Model.Query != null)
 {
     <div>
-        @Html.ValidationSummary()
+        <p class="text-danger">@Html.ValidationSummary()</p>
     </div>
 }
 

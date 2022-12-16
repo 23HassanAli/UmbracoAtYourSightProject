@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyProject.Models;
 using System.Net;
 using System.Net.Mail;
 using Umbraco.Cms.Core.Cache;
@@ -10,6 +9,7 @@ using Umbraco.Cms.Core.Web;
 using Umbraco.Cms.Infrastructure.Persistence;
 using Umbraco.Cms.Web.Website.Controllers;
 using Umbraco.Cms.Web.Website.ActionResults;
+using MyProject.Models.ViewModels;
 
 namespace MyProject.Controllers
 {
