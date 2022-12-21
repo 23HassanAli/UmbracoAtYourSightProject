@@ -30,14 +30,14 @@
             <img src="~/assets/logo-preview.png" style="width:100px">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="container2 collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-3 mb-lg-0" id="myListItems">
-                    <li class="text-white-50 @Html.Raw(Model.Id == site.Id ? "active" : "")">
-                        <a class="link" href="@Model.Root().Url()">Home</a>
+                <ul class="navbar-nav nav ms-auto mb-3 mb-lg-0" id="myListItems">
+                    <li class="text-dark-50 nav-item @Html.Raw(Model.Id == site.Id ? "active" : "")">
+                        <a class="" href="@Model.Root().Url()">Home</a>
                     </li>
                     @foreach (var item in selection.Where(x => x.HasProperty("addToNav") && x.GetProperty("addToNav").HasValue() == true))
                     {
-                        <li class="nav-item text-white-50 @(item.IsAncestorOrSelf(Model) ? "active" : "") " style="background-color:#0000">
-                            <a class="link" href="@item.Url(PublishedUrlProvider)">@item.Name</a>
+                        <li class="text-dark-50 nav-item">
+                            <a class="" href="@item.Url(PublishedUrlProvider)">@item.Name</a>
                         </li>
                     }                 
                          <li>

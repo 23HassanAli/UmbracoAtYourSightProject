@@ -2,21 +2,18 @@
 
 a {
     text-decoration: none;
-}
-
-.activate, .lnks:hover {
-    font-size: 25px;
-    color: white;
-    background-color: black;
-    padding: 3px;
-    border-radius: 10px;
+    font-size: 20px;
 }
 
 .bg-gradient-primary-to-secondary {
     background-color: #0061f0 !important;
 }
 
-.nav-link {
+a:active {
     background-color: black;
-    padding: 3px;
+}
+
+.active {
+    border-bottom: 3px solid red;
+    
 }

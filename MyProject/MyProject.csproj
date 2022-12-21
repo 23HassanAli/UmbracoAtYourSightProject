@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="NewsAPI" Version="0.6.0" />
     <PackageReference Include="Umbraco.Cms" Version="10.3.2" />
   </ItemGroup>
 
@@ -20,6 +21,7 @@
     <PackageReference Include="Microsoft.ICU.ICU4C.Runtime" Version="68.2.0.9" />
     <PackageReference Include="Umbraco.Forms" Version="10.2.1" />
     <PackageReference Include="uSync" Version="10.3.0" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.4" />
     <RuntimeHostConfigurationOption Include="System.Globalization.AppLocalIcu" Value="68.2.0.9" Condition="$(RuntimeIdentifier.StartsWith('linux')) or $(RuntimeIdentifier.StartsWith('win')) or ('$(RuntimeIdentifier)' == '' and !$([MSBuild]::IsOSPlatform('osx')))" />
   </ItemGroup>
 
