@@ -1,5 +1,6 @@
 ﻿using Lucene.Net.Index;
 using MyProject.Components;
+using MyProject.Data;
 using MyProject.Models;
 using NewsAPI;
 using NewsAPI.Constants;
@@ -16,12 +17,24 @@ namespace MyProject.Repository
     public class NewsApiRepository
     {
         private HttpClient httpClient;
-        public NewsApiRepository()
+        private ArticlesData _articlesData;
+        private List<NewsArticle> newNewsArticles;
+        
+        public NewsApiRepository(List<NewsArticle> newsArticles)
         {
-            httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+
+            newNewsArticles = new List<NewsArticle>();
+            if (newsArticles != null)
+            {
+                foreach(var item in newsArticles)
+                {
+                    newNewsArticles.Add(item);
+                }
+                
+            }
+                
         }
-        public async Task<List<NewsArticle>> GetArticles()
+        public async Task<IEnumerable<NewsArticle>> GetArticles(int skip, int take)
         {
 
             List<NewsArticle> newsArticles = new List<NewsArticle>();
@@ -44,7 +57,9 @@ namespace MyProject.Repository
                         NullValueHandling = NullValueHandling.Ignore,
                     });
                     //newsArticles = root.Articles;
-                    foreach (var item in root.Articles.Take(5))
+               
+                                
+                    foreach (var item in root.Articles.Skip(skip).Take(take))
                     {
                         newsArticles.Add(item);
                     }

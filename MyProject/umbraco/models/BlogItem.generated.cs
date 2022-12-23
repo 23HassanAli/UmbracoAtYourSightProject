@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>BlogItem</summary>
 	[PublishedModel("blogItem")]
-	public partial class BlogItem : PublishedContentModel, IBlogItems, ICategories, ITitleBox
+	public partial class BlogItem : PublishedContentModel, IAddToFeaturedArticles, IBlogItems, ICategories, ITitleBox
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -48,6 +48,13 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		}
 
 		// properties
+
+		///<summary>
+		/// Add Articles To List
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
+		[ImplementPropertyType("addArticlesToList")]
+		public virtual bool AddArticlesToList => global::Umbraco.Cms.Web.Common.PublishedModels.AddToFeaturedArticles.GetAddArticlesToList(this, _publishedValueFallback);
 
 		///<summary>
 		/// Author Name

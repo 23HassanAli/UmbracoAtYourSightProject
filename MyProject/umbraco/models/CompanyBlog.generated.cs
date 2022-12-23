@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Company Blog</summary>
 	[PublishedModel("companyBlog")]
-	public partial class CompanyBlog : PublishedContentModel, IBlogItems, ITitleBox
+	public partial class CompanyBlog : PublishedContentModel, IBlogItems, ICompanyBlogComposition, ITitleBox
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -87,6 +87,13 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("thumbnailImage")]
 		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops ThumbnailImage => global::Umbraco.Cms.Web.Common.PublishedModels.BlogItems.GetThumbnailImage(this, _publishedValueFallback);
+
+		///<summary>
+		/// Add To Company Blog
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
+		[ImplementPropertyType("addToCompanyBlog")]
+		public virtual bool AddToCompanyBlog => global::Umbraco.Cms.Web.Common.PublishedModels.CompanyBlogComposition.GetAddToCompanyBlog(this, _publishedValueFallback);
 
 		///<summary>
 		/// Subtitle

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyProject.Data;
+using MyProject.Models;
 using MyProject.Repository;
 
 namespace MyProject.Components
@@ -8,10 +10,13 @@ namespace MyProject.Components
     {
 
        
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync(List<NewsArticle> newNewsArticles)
         {
-            NewsApiRepository newsApiRepository = new NewsApiRepository();
-            var newsArticles = await newsApiRepository.GetArticles();
+            ArticlesData articles = new ArticlesData();
+            NewsApiRepository newsApiRepository = new NewsApiRepository(newNewsArticles);
+            var newsArticles = await newsApiRepository.GetArticles(0, 5);
+            //if (newNewsArticles != null)
+            //newNewsArticles.Add(newNewsArticles);
             if (newsArticles == null)
                 return View();
 

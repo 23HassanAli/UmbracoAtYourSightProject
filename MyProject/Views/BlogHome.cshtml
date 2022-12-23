@@ -1,28 +1,31 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.BlogHome>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
     Layout = "Main.cshtml";
-    var selection = Umbraco.Content(Guid.Parse("9d9db464-5329-4096-98fd-95166af01c36"))
-                    .ChildrenOfType("blogItem")
-                    
-                    .Where(x => x.IsVisible())
-                    .OrderBy(x => x.CreateDate);
+
 
     var dateString = "12/5/2022 12:00:00 AM";
     DateTime date1 = DateTime.Parse(dateString);
+    var companyArticles = Umbraco.Content(Guid.Parse("9d9db464-5329-4096-98fd-95166af01c36"))
+           .ChildrenOfType("companyBlog")
+           .Where(x => x.IsVisible());
 
-    var selection2 = Umbraco.Content(Guid.Parse("9d9db464-5329-4096-98fd-95166af01c36"))
-                    .ChildrenOfType("blogItem")
-                    .Where(x => (x.CreateDate > date1))
-                    .Where(x => x.IsVisible());
+    var selection = Umbraco.Content(Guid.Parse("9d9db464-5329-4096-98fd-95166af01c36"))
+                 .ChildrenOfType("blogItem")
+                 .Where(x => x.IsVisible())
+                 .OrderBy(x => x.CreateDate);
+    
+
+
 }
 <main class="flex-shrink-0">
     <!-- Page Content-->
     <section class="py-5">
         <div class="container px-5">
             <h1 class="fw-bolder fs-5 mb-4">Company Blog</h1>
-            @foreach (var item in selection2)
+            @foreach (var item in companyArticles)
             {
                 var thumbnail = item.Value<IPublishedContent>("thumbnailImage");
                 <div class="card border-0 shadow rounded-3 overflow-hidden">
@@ -42,27 +45,26 @@
                                 </div>
                             </div>
                             <div class="col-lg-6 col-xl-7">
-                                <div class="bg-featured-blog" >
+                                <div class="bg-featured-blog">
                                     <img src="@thumbnail.Url()" style="width:782px">
-                                </div>    
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <br />
             }
-           
+
         </div>
     </section>
     @await Component.InvokeAsync("NewsArticles")
     <!-- Blog preview section-->
-
     <section class="py-5">
         <div class="container px-5">
             <h2 class="fw-bolder fs-5 mb-4">Featured Stories</h2>
             <div class="row gx-5">
 
-                @foreach (var item in selection)
+                @foreach (var item in selection.Where(x => x.HasProperty("addArticlesToList") && x.GetProperty("addArticlesToList").HasValue() == true))
                 {
                     var thumbnail = item.Value<IPublishedContent>("thumbnailImage");
 
@@ -80,7 +82,7 @@
                                         <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
                                         <div class="small">
                                             <div class="fw-bold">@item.Value("authorName")</div>
-                                            <div class="text-muted">@item.Value("publishedOn")</div>
+                                            <div class="text-muted">@String.Format("{0:d/M/yyyy}", @item.Value("publishedOn")) </div>
                                         </div>
                                     </div>
                                 </div>
@@ -89,6 +91,9 @@
                     </div>
                 }
             </div>
+
+
         </div>
+
     </section>
 </main>
