@@ -1,0 +1,11 @@
+﻿{
+  "dashboards": [
+    {
+      "alias": "googleAnalytics",
+      "view": "/App_Plugins/GoogleAnalyticsSection/dashboard.html",
+      "sections": [ "googleAnalytics" ],
+      "weight": -10
+    }
+  ],
+  "bundleOptions": "None"
+}

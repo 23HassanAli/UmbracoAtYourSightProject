@@ -1,5 +1,6 @@
 ﻿using Lucene.Net.Analysis.Bg;
 using MyProject.Interfaces;
+using MyProject.Sections;
 using MyProject.Services;
 using MyProject.UmbracoServices;
 using Umbraco.Cms.Core.Composing;
@@ -15,8 +16,8 @@ namespace MyProject.Composers
 
             builder.Services.AddScoped<ISearchService, SearchService>();
 
-            builder.Services.AddSingleton(typeof(IDataTypeValueService), typeof(DataTypeValueService));    
-            
+            builder.Services.AddSingleton(typeof(IDataTypeValueService), typeof(DataTypeValueService));
+            builder.AddSection<GoogleAnalyticsSection>();
         }
     }
 }

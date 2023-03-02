@@ -1,4 +1,4 @@
-﻿const apiUrl = 'https://localhost:44388/Umbraco/Api/NewsArticles/GetAllArticles'
+﻿const apiUrl = '/Umbraco/Api/NewsArticles/GetAllArticles'
 
 var navItems = document.querySelectorAll(".nav-item");
 for (var i = 0; i < navItems.length; i++) {

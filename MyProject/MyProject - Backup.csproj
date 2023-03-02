@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="wwwroot\scripts\**" />
+    <Content Remove="wwwroot\scripts\**" />
+    <EmbeddedResource Remove="wwwroot\scripts\**" />
+    <None Remove="wwwroot\scripts\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Plugins\GoogleAnalyticsSection\dashboard.html" />
+    <Content Include="App_Plugins\GoogleAnalyticsSection\lang\en-US.xml" />
+    <Content Include="App_Plugins\GoogleAnalytics\backoffice\googleAnalyticsAlias\delete.html" />
+    <Content Include="App_Plugins\GoogleAnalytics\GoogleAnalytics.html" />
+    <Content Include="App_Plugins\GoogleAnalytics\lang\en-us.xml" />
+    <Content Include="App_Plugins\MyCustomDashboard\lang\en-US.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NewsAPI" Version="0.6.0" />
+    <PackageReference Include="React.Core" Version="5.2.12" />
+    <PackageReference Include="Umbraco.Cms" Version="10.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Opt-in to app-local ICU to ensure consistent globalization APIs across different platforms -->
+    <PackageReference Include="Microsoft.ICU.ICU4C.Runtime" Version="68.2.0.9" />
+    <PackageReference Include="Umbraco.Forms" Version="10.2.1" />
+    <PackageReference Include="uSync" Version="10.3.0" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.4" />
+    <RuntimeHostConfigurationOption Include="System.Globalization.AppLocalIcu" Value="68.2.0.9" Condition="$(RuntimeIdentifier.StartsWith('linux')) or $(RuntimeIdentifier.StartsWith('win')) or ('$(RuntimeIdentifier)' == '' and !$([MSBuild]::IsOSPlatform('osx')))" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="App_Plugins\GoogleAnalytics\backoffice\googleAnalyticsAlias\edit.html" />
+    <None Include="App_Plugins\GoogleAnalytics\googleanalytics.controller.js" />
+    <None Include="App_Plugins\GoogleAnalytics\js\edit.controllers.js" />
+    <None Include="App_Plugins\MyCustomDashboard\dashboard.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="App_Plugins\NewFolder\" />
+    <Folder Include="Views\MyCustomDashboard\" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <!-- Razor files are needed for the backoffice to work correctly -->
+    <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Remove RazorCompileOnBuild and RazorCompileOnPublish when not using ModelsMode InMemoryAuto -->
+    <RazorCompileOnBuild>false</RazorCompileOnBuild>
+    <RazorCompileOnPublish>false</RazorCompileOnPublish>
+  </PropertyGroup>
+
+</Project>

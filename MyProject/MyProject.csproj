@@ -10,9 +10,16 @@
     <EmbeddedResource Remove="wwwroot\scripts\**" />
     <None Remove="wwwroot\scripts\**" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Plugins\GoogleAnalyticsSection\assets\index.css" />
+    <Content Include="App_Plugins\GoogleAnalyticsSection\dashboard.html" />
+    <Content Include="App_Plugins\GoogleAnalyticsSection\lang\en-US.xml" />
+    <Content Include="App_Plugins\GoogleAnalytics\lang\en-us.xml" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="NewsAPI" Version="0.6.0" />
+    <PackageReference Include="React.Core" Version="5.2.12" />
     <PackageReference Include="Umbraco.Cms" Version="10.3.2" />
   </ItemGroup>
 
@@ -23,6 +30,16 @@
     <PackageReference Include="uSync" Version="10.3.0" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.4" />
     <RuntimeHostConfigurationOption Include="System.Globalization.AppLocalIcu" Value="68.2.0.9" Condition="$(RuntimeIdentifier.StartsWith('linux')) or $(RuntimeIdentifier.StartsWith('win')) or ('$(RuntimeIdentifier)' == '' and !$([MSBuild]::IsOSPlatform('osx')))" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="App_Plugins\GoogleAnalyticsSection\assets\index.js" />
+    <None Include="App_Plugins\GoogleAnalyticsSection\assets\react.svg" />
+    <None Include="App_Plugins\GoogleAnalyticsSection\package.manifest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\MyCustomDashboard\" />
   </ItemGroup>
 
   <PropertyGroup>

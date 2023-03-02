@@ -1,0 +1,32 @@
+body{
+  margin: 0;
+  box-sizing: border-box;
+}
+.navigation{
+  display: flex;
+  flex-direction: row;
+}
+nav{
+  display: flex;
+  flex-direction: column;
+  background-color: aliceblue;
+  padding: 16px 32px;
+  list-style-type: none;
+}
+nav a {
+  margin-right: 16px;
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+  
+}
+nav a.active{
+  font-weight: bold;
+}
+nav a:hover{
+  font-weight: bold;
+}
+.chart{
+  width: 1200px;
+  height: 1000px;
+}
