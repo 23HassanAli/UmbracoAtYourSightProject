@@ -37,8 +37,7 @@ namespace MyProject.Repository
         public async Task<IEnumerable<NewsArticle>> GetArticles(int skip, int take)
         {
 
-            List<NewsArticle> newsArticles = new List<NewsArticle>();
-            
+            List<NewsArticle> newsArticles = new List<NewsArticle>();         
             try
             {               
                 httpClient = new HttpClient();

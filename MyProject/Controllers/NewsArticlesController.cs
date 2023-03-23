@@ -17,7 +17,6 @@ namespace MyProject.Controllers
     public class NewsArticlesController : UmbracoApiController
     {
         [HttpGet]
-        //[Route("NewsArticles/getAllArticles")]
         public async Task<IEnumerable<NewsArticle>> GetAllArticles([FromQuery] string skip, [FromQuery]string take)
         {
             System.Collections.Generic.List<NewsArticle> list = new System.Collections.Generic.List<NewsArticle>();

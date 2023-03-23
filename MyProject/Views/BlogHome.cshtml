@@ -38,7 +38,7 @@
                                         @item.Value("title")
                                     </div>
                                     <p>@item.Value("subtitle")...</p>
-                                    <a class="stretched-link text-decoration-none" href="@item.Url()">
+                                    <a class="stretched-link text-decoration-none blog-click" href="@item.Url()">
                                         Read more
                                         <i class="bi bi-arrow-right"></i>
                                     </a>
@@ -58,6 +58,10 @@
         </div>
     </section>
     @await Component.InvokeAsync("NewsArticles")
+    
+@*<div id="chart-container">FusionCharts XT will load here!</div>*@
+
+    @await Component.InvokeAsync("chartjs")
     <!-- Blog preview section-->
     <section class="py-5">
         <div class="container px-5">

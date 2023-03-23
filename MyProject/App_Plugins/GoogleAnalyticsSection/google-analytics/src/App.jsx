@@ -1,21 +1,15 @@
 import React from 'react'
-import  { Route, Routes } from "react-router-dom";
+import  { BrowserRouter,  Route, Routes, Router } from "react-router-dom";
 import Barchart2 from './pages/Barchart2'
 import Barchart from './pages/Barchart'
 import Navbar from './components/Navbar'
 import './index.css'
+import Charts from './components/Charts';
 
-function App() {
-
-    console.log(window.location.pathname);
- 
+function App() { 
   return (
-    <div className='navigation'>
-         <Navbar/>
-        <Routes>
-        <Route path='/barchart' element={<Barchart/>}>Barchart</Route>
-        <Route path='/barchart2' element={<Barchart2/>}>Barchart 2</Route>
-        </Routes>       
+    <div className='navigation'>   
+      <Charts></Charts>            
     </div>   
   )
 }

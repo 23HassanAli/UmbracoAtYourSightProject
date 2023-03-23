@@ -8,8 +8,6 @@ namespace MyProject.Components
     [ViewComponent(Name = "NewsArticles")]
     public class NewsArticlesViewComponent : ViewComponent
     {
-
-       
         public async Task<IViewComponentResult> InvokeAsync(List<NewsArticle> newNewsArticles)
         {
             ArticlesData articles = new ArticlesData();

@@ -23,7 +23,8 @@
       "applicationUrl": "https://localhost:44388;http://localhost:33908",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }      
+        //"GOOGLE_APPLICATION_CREDENTIALS": "~\\GoogleCredentials\\quickstart-1678906853030-58ee6cdf56d8.json"
+      }
     }
   }
 }
