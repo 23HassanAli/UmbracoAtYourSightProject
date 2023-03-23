@@ -47,7 +47,9 @@ namespace MyProject.Controllers
 
             var root = new RootObject();
 
-            root = JsonConvert.DeserializeObject<RootObject>(response.ToJson(), new JsonSerializerSettings
+     
+                
+                root = JsonConvert.DeserializeObject<RootObject>(response.ToJson(), new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore,
             });

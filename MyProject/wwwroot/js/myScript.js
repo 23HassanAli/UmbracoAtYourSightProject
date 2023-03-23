@@ -35,26 +35,36 @@ if(seeMore != null) {
         } else {
             alert("HTTP-Error: " + response.status);
         }
-    })
+    });
 }
 
 
 const seeLess = document.getElementById("seeLess");
-seeLess.addEventListener("click", function removeArticles() {
-    console.log("seeLess")
-    let element = document.getElementById('articles');
-    while (element.hasChildNodes()) {
-        element.removeChild(element.firstChild);
-    }
-    document.getElementById("seeLess").style.display = 'none'
-    document.getElementById("seeMore").style.display = 'block'
-   
+if (seeLess != null) {
+    seeLess.addEventListener("click", function removeArticles() {
+        console.log("seeLess")
+        let element = document.getElementById('articles');
+        while (element.hasChildNodes()) {
+            element.removeChild(element.firstChild);
+        }
+        document.getElementById("seeLess").style.display = 'none'
+        document.getElementById("seeMore").style.display = 'block'
+
+    });
+}
+
+let links = document.getElementById('blog-post');
+
+links.addEventListener('click', function handelClick(event) {
+    console.log("with id click blog post" + event);
 })
 
-let links = document.querySelectorAll('.blog-click');
+//links.forEach(link => {
+//    link.addEventListener('click', function handelClick(event) {
+//        console.log('link clickes' +  event);
+//    });
+//});
 
-links.forEach(link => {
-    link.addEventListener('click', function handelClick(event) {
-        console.log('link clickes', event);
-    });
-});
+function handelClick(event) {
+    console.log("function handle click" + event);
+}

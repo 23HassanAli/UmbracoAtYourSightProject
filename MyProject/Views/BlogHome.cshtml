@@ -34,11 +34,11 @@
                             <div class="col-lg-6 col-xl-5 py-lg-5">
                                 <div class="p-4 p-md-5">
                                     <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
-                                    <div class="h2 fw-bolder">
+                                    <div class="h2 fw-bolder blog-click">
                                         @item.Value("title")
                                     </div>
                                     <p>@item.Value("subtitle")...</p>
-                                    <a class="stretched-link text-decoration-none blog-click" href="@item.Url()">
+                                    <a class="stretched-link text-decoration-none " onclick="handelClick" href="@item.Url()">
                                         Read more
                                         <i class="bi bi-arrow-right"></i>
                                     </a>
@@ -77,7 +77,7 @@
                             <img class="card-img-top" style="height:300px; width:auto" src="@thumbnail.Url()" alt="..." />
                             <div class="card-body p-4">
 
-                                <a class="text-decoration-none link-dark stretched-link" href="@item.Url()"><div class="h5 card-title mb-3">@item.Value("title")</div></a>
+                                <a class="text-decoration-none link-dark stretched-link" id="blog-post" href="@item.Url()"><div class="h5 card-title mb-3">@item.Value("title")</div></a>
                                 <p class="card-text mb-0">@item.Value("subtitle")</p>
                             </div>
                             <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
